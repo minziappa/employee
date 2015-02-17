@@ -1,6 +1,30 @@
-/* DROP TABLE sample_user; */
+/*
+CREATE DATABASE employee;
+ */
 
-CREATE DATABASE emplyee;
+DROP TABLE if exists management_admin;
+
+DROP TABLE if exists employee_sequence;
+DROP TABLE if exists employee_user;
+DROP TABLE if exists employee_company;
+DROP TABLE if exists employee_family;
+DROP TABLE if exists employee_school;
+DROP TABLE if exists employee_certificate;
+
+CREATE TABLE management_admin
+(
+	admin_id BIGINT UNSIGNED NOT NULL AUTO_INCREMENT,
+	admin_name VARCHAR(45) NOT NULL,
+	admin_pwd VARCHAR(250) NOT NULL,
+	admin_status CHAR(1) NOT NULL,
+	user_num BIGINT UNSIGNED NOT NULL,
+	delete_flag CHAR(1) NULL,
+	insert_date TIMESTAMP NOT NULL,
+	update_date TIMESTAMP NOT NULL,
+	PRIMARY KEY (admin_id)
+) ENGINE=innoDB DEFAULT CHARSET=utf8;
+
+CREATE INDEX management_admin_idx1 ON management_admin(admin_id);
 
 CREATE TABLE employee_sequence
 (
@@ -38,8 +62,8 @@ CREATE TABLE employee_user
 	PRIMARY KEY (user_num)
 ) ENGINE=innoDB DEFAULT CHARSET=utf8;
 
-CREATE INDEX user_id_idx1 ON emplyee_user(user_id);
-CREATE INDEX user_name_last_idx2 ON emplyee_user(user_name_last);
+CREATE INDEX user_id_idx1 ON employee_user(user_id);
+CREATE INDEX user_name_last_idx2 ON employee_user(user_name_last);
 
 CREATE TABLE employee_company
 (

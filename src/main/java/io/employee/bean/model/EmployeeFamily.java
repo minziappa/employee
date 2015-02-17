@@ -1,6 +1,10 @@
 package io.employee.bean.model;
 
-public class EmployeeFamily {
+import java.io.Serializable;
+
+public class EmployeeFamily implements Serializable {
+
+	private static final long serialVersionUID = 1L;
 
 	private long familyNum;
 	private String familyRelation;

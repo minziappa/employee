@@ -1,8 +1,11 @@
 package io.employee.bean.model;
 
+import java.io.Serializable;
 import java.util.Date;
 
-public class EmployeeCertificate {
+public class EmployeeCertificate implements Serializable {
+
+	private static final long serialVersionUID = 1L;
 
 	private long certificateNum;
 	private String certificateName;
