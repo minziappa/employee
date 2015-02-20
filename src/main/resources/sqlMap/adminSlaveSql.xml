@@ -1,0 +1,57 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" 
+  "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="io.employee.dao.AdminSlaveDao">
+
+	<select id="selectAdmin" parameterType="map" 
+		resultType="io.employee.bean.model.admin.ManagementAdmin">
+		SELECT
+			admin_id,
+			admin_name,
+			admin_pwd,
+			admin_status,
+			user_num,
+			delete_flag,
+			insert_date,
+			update_date
+		FROM
+			management_admin
+		WHERE
+			admin_id = #{adminId}
+	</select>
+	<select id="selectAdminList" parameterType="map" 
+		resultType="io.employee.bean.model.admin.ManagementAdmin">
+		SELECT
+			admin_id,
+			admin_name,
+			admin_pwd,
+			admin_status,
+			user_num,
+			delete_flag,
+			insert_date,
+			update_date
+		FROM
+			management_admin
+		LIMIT
+			#{nowPage}, #{row}
+	</select>
+
+	<select id="selectAdminListByDate" parameterType="map" 
+		resultType="io.employee.bean.model.admin.ManagementAdmin">
+		SELECT
+			admin_id,
+			admin_name,
+			admin_pwd,
+			admin_status,
+			user_num,
+			delete_flag,
+			insert_date,
+			update_date
+		FROM
+			management_admin
+		WHERE
+			insert_date <![CDATA[<=]]> #{insertDate}
+	</select>
+
+</mapper>

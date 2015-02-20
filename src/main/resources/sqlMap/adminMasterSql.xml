@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" 
+  "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="io.employee.dao.AdminMasterDao">
+
+	<insert id="insertEmployee" parameterType="map">
+		INSERT INTO management_admin (
+			admin_id,
+			admin_name,
+			admin_pwd,
+			admin_status,
+			user_num,
+			delete_flag,
+			insert_date,
+			update_date
+		) VALUES (
+			#{adminId},
+			#{adminName},
+			#{adminPwd},
+			#{adminStatus},
+			#{userNum},
+			#{deleteFlag},
+			now(),
+			now()
+		)
+	</insert>
+
+	<delete id="deleteEmployeeById" parameterType="map">
+		DELETE FROM management_admin 
+		WHERE 
+			admin_id = #{adminId}
+	</delete>
+
+</mapper>
