@@ -2,7 +2,7 @@ package io.employee.service.impl;
 
 import io.employee.bean.model.EmployeeUser;
 import io.employee.bean.para.InsertUserPara;
-import io.employee.bean.para.admin.SelectAdminPara;
+import io.employee.bean.para.SelectUserPara;
 import io.employee.service.EmployeeService;
 
 import java.util.List;
@@ -49,9 +49,8 @@ public class EmployeeServiceImpl implements EmployeeService {
 	}
 
 	@Override
-	public List<EmployeeUser> selectEmployeeUserList(
-			SelectAdminPara selectAdminPara) throws Exception {
-		// TODO Auto-generated method stub
+	public List<EmployeeUser> selectEmployeeUserList(SelectUserPara selectAdminPara) throws Exception {
+
 		return null;
 	}
 

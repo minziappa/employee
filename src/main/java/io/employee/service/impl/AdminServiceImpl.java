@@ -28,6 +28,7 @@ public class AdminServiceImpl implements AdminService {
     private Configuration configuration;
 	@Autowired
 	private Md5PasswordEncoder passwordEncoder;
+
 	@Override
 	public boolean insertemployee(InsertUserPara insertUserPara)
 			throws Exception {
