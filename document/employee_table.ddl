@@ -1,5 +1,5 @@
 /*
-CREATE DATABASE employee;
+CREATE DATABASE employee DEFAULT CHARACTER SET utf8;
  */
 
 DROP TABLE if exists management_admin;
@@ -146,3 +146,6 @@ CREATE TABLE employee_certificate
 ) ENGINE=innoDB DEFAULT CHARSET=utf8;
 
 CREATE INDEX user_num_idx1 ON employee_certificate(user_num);
+
+/* Register a admin user */
+INSERT INTO management_admin(admin_name, admin_pwd, admin_status, user_num, delete_flag, insert_date, update_date) Values('admin','098f6bcd4621d373cade4e832627b4f6', 1, 1, 0, now(), now());

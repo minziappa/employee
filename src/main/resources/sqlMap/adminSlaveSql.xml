@@ -18,8 +18,9 @@
 		FROM
 			management_admin
 		WHERE
-			admin_id = #{adminId}
+			admin_name = #{adminName}
 	</select>
+
 	<select id="selectAdminList" parameterType="map" 
 		resultType="io.employee.bean.model.admin.ManagementAdmin">
 		SELECT

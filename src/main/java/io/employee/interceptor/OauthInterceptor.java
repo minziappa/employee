@@ -1,6 +1,6 @@
 package io.employee.interceptor;
 
-import io.employee.bean.ExtendAdmin;
+import io.employee.bean.ExtendUser;
 
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
@@ -37,8 +37,8 @@ public class OauthInterceptor implements HandlerInterceptor {
 		HttpSession session = request.getSession();
 		Object obj = SecurityContextHolder.getContext().getAuthentication().getPrincipal();
 
-		if(obj instanceof ExtendAdmin) {
-			ExtendAdmin extendUser = (ExtendAdmin) obj;
+		if(obj instanceof ExtendUser) {
+			ExtendUser extendUser = (ExtendUser) obj;
 			session.setAttribute("user", extendUser.getUsername());
 			logger.info("There is ExtendUser, user = " + extendUser.getUsername());
 			session.setMaxInactiveInterval(100*60);

@@ -1,6 +1,6 @@
 package io.employee.controller;
 
-import io.employee.bean.ExtendAdmin;
+import io.employee.bean.ExtendUser;
 
 import java.io.ByteArrayInputStream;
 import java.io.File;
@@ -46,8 +46,8 @@ public abstract class AbstractBaseController {
 	public void handleLogin(HttpSession session) throws Exception {
 		Object obj = SecurityContextHolder.getContext().getAuthentication().getPrincipal();
 
-		if(obj instanceof ExtendAdmin) {
-			ExtendAdmin extendUser = (ExtendAdmin) obj;
+		if(obj instanceof ExtendUser) {
+			ExtendUser extendUser = (ExtendUser) obj;
 			session.setAttribute("user", extendUser.getUsername());
 			session.setMaxInactiveInterval(100*60);
 		}
