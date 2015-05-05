@@ -4,6 +4,7 @@ import java.util.Map;
 
 import io.employee.bean.model.EmployeeModel;
 import io.employee.bean.para.InsertUserPara;
+import io.employee.bean.para.RegisterAdminPara;
 import io.employee.service.EmployeeService;
 
 import javax.servlet.http.HttpServletRequest;
@@ -78,32 +79,37 @@ public class AdminController extends AbstractBaseController {
      * 
      * @since  1.7
      */
-	@RequestMapping(value = {"insertUser.do"})
-	public String insertUser(@Valid InsertUserPara insertUserPara, 
-			BindingResult bindingResult, ModelMap model, 
-			HttpServletResponse response, HttpServletRequest request) throws Exception {
-
-		EmployeeModel employeeModel = new EmployeeModel();
-
-		// If it occurs a error, set the default value.
-		if (bindingResult.hasErrors()) {
-			logger.error("insertUser.sp - it is occured a parameter error.");
-			response.setStatus(400);
-
-			Map<String, String> mapErrorMessage = this.handleErrorMessages(bindingResult.getAllErrors());
-			model.addAttribute("errorMessage",  mapErrorMessage);
-			model.addAttribute("model", employeeModel);
-			return "employee/admin";
-		}
-
-//		// Execute the transaction
-//		if(!employeeService.insertemployee(insertUserPara)) {
-//			model.addAttribute("errorMessage", message.getMessage("employee.parameter.error.message", null, LOCALE));
-//			model.addAttribute("model", employeeModel);
-//			return "employee/admin";
-//		}
-
-		return "redirect:/employee/user/user.do";
+	@RequestMapping(value = {"inputAdmin"})
+	public String inputAdmin() throws Exception {
+		return "admin/inputAdmin";
 	}
+
+//	@RequestMapping(value = {"inputAdmin"})
+//	public String registerAdmin(@Valid RegisterAdminPara registerAdminPara, 
+//			BindingResult bindingResult, ModelMap model, 
+//			HttpServletResponse response) throws Exception {
+//
+//		EmployeeModel employeeModel = new EmployeeModel();
+//
+//		// If it occurs a error, set the default value.
+//		if (bindingResult.hasErrors()) {
+//			logger.error("insertUser.sp - it is occured a parameter error.");
+//			response.setStatus(400);
+//
+//			Map<String, String> mapErrorMessage = this.handleErrorMessages(bindingResult.getAllErrors());
+//			model.addAttribute("errorMessage",  mapErrorMessage);
+//			model.addAttribute("model", employeeModel);
+//			return "admin/register";
+//		}
+//
+////		// Execute the transaction
+////		if(!employeeService.insertemployee(insertUserPara)) {
+////			model.addAttribute("errorMessage", message.getMessage("employee.parameter.error.message", null, LOCALE));
+////			model.addAttribute("model", employeeModel);
+////			return "employee/admin";
+////		}
+//
+//		return "redirect:/employee/user/user.do";
+//	}
 
 }

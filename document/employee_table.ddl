@@ -17,7 +17,7 @@ CREATE TABLE management_admin
 	admin_name VARCHAR(45) NOT NULL,
 	admin_pwd VARCHAR(250) NOT NULL,
 	admin_status CHAR(1) NOT NULL,
-	user_num BIGINT UNSIGNED NOT NULL,
+	user_num BIGINT UNSIGNED NULL,
 	delete_flag CHAR(1) NULL,
 	insert_date TIMESTAMP NOT NULL,
 	update_date TIMESTAMP NOT NULL,
