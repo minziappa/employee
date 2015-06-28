@@ -1,5 +1,7 @@
 package io.employee.interceptor;
 
+import java.util.Enumeration;
+
 import io.employee.bean.ExtendUser;
 import io.employee.bean.model.admin.ManagementAdmin;
 
@@ -34,6 +36,13 @@ public class OauthInterceptor implements HandlerInterceptor {
 
 		String pathInfo = request.getPathInfo();
 		logger.info("pathInfo >>> " + pathInfo);
+
+		Enumeration<?> header = request.getHeaderNames();
+		while(header.hasMoreElements()){
+		    String key = (String) header.nextElement();
+		    String value = request.getHeader(key);
+		    System.out.println("key=" + key + ", value=" + value);
+		}
 
 		HttpSession session = request.getSession();
 		Object obj = SecurityContextHolder.getContext().getAuthentication().getPrincipal();
