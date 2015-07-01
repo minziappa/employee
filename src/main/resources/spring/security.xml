@@ -19,7 +19,7 @@
 
 	    <logout logout-url="/employee/auth/logout" logout-success-url="/employee/"/>
 	    <form-login
-            login-page="/employee/login/login"
+            login-page="/employee/login/index"
             authentication-failure-url="/employee/login/login?error=true"
             default-target-url="/employee/"/>
 	</http>
