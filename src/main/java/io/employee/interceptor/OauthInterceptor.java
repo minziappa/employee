@@ -45,13 +45,16 @@ public class OauthInterceptor implements HandlerInterceptor {
 		}
 
 		HttpSession session = request.getSession();
-		Object obj = SecurityContextHolder.getContext().getAuthentication().getPrincipal();
+		if(SecurityContextHolder.getContext().getAuthentication() != null) {
+			Object obj = SecurityContextHolder.getContext().getAuthentication().getPrincipal();
 
-		if(obj instanceof ExtendUser) {
-			ExtendUser<ManagementAdmin> extendUser = (ExtendUser<ManagementAdmin>)obj;
-			session.setAttribute("user", extendUser.getUsername());
-			logger.info("There is ExtendUser, user = " + extendUser.getUsername());
-			session.setMaxInactiveInterval(100*60);
+			if(obj instanceof ExtendUser) {
+				ExtendUser<ManagementAdmin> extendUser = (ExtendUser<ManagementAdmin>)obj;
+				session.setAttribute("user", extendUser.getUsername());
+				logger.info("There is ExtendUser, user = " + extendUser.getUsername());
+				session.setMaxInactiveInterval(100*60);
+			}
+
 		}
 
 		return true;

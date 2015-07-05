@@ -31,20 +31,6 @@ public class IndexController extends AbstractBaseController {
 	@Autowired
 	private MessageSource message;
 
-    /**
-     * Index for ......
-     * 
-     * @param  ModelMap 
-     *         model
-     *         
-     * @throws  Exception
-     *          If a error occur, ...
-     *
-     * @return String
-     * 		   a file name of FTL.
-     * 
-     * @since  1.7
-     */
     @RequestMapping(value = {"/", "", "index"}, method=RequestMethod.GET)
 	public String index(HttpSession session, ModelMap model) throws Exception {
 

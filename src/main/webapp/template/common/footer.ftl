@@ -1,4 +1,2 @@
-      <hr>
-      <footer>
-        <p>&copy; Company 2014</p>
-      </footer>
+		<hr>
+		<div class="panel-footer text-center">Docs Blog Updates Terms About Us Privacy Policy 日本語</div> 

@@ -4,6 +4,7 @@ import io.employee.bean.para.login.SignUpPara;
 import io.employee.service.LoginService;
 import io.utility.mail.EmailBean;
 import io.utility.mail.Emailer;
+import io.utility.utile.TokenUtility;
 
 import org.apache.commons.configuration.Configuration;
 import org.slf4j.Logger;
@@ -26,10 +27,13 @@ public class LoginServiceImpl implements LoginService {
 		email.setTo(signUpPara.getUserEmail());
 		email.setFrom("higuybugs@gmail.com");
 
-		email.setMsg("This is a test");
+		StringBuffer sb = new StringBuffer();
+		sb.append("This is a test /r");
+		sb.append("http://localhost:8080/employee/login/confirmSingup?token=" + TokenUtility.generateToken(signUpPara.getUserEmail()));
+		email.setMsg(sb.toString());
 		email.setSubject("Please, complete your register");
 
-		Emailer.sendEmail(email, "higuybugs@gmail.com", "heyheypassword");
+		Emailer.sendEmail(email, "higuybugs@gmail.com", "heyhey0922!");
 	}
 
 }

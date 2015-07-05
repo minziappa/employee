@@ -25,8 +25,8 @@ configurations {
 }
 
 ext {
-	springVersion = '3.2.13.RELEASE'
-	springSecrityVersion = '3.2.7.RELEASE'
+	springVersion = '4.1.7.RELEASE'
+	springSecrityVersion = '4.0.1.RELEASE'
 }
 
 dependencies {

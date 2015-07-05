@@ -8,14 +8,16 @@
         http://www.springframework.org/schema/security http://www.springframework.org/schema/security/spring-security.xsd
           http://www.springframework.org/schema/context http://www.springframework.org/schema/context/spring-context.xsd">
 
-	<http auto-config='true' use-expressions="true" access-denied-page="/employee/login/denied">
+	<http pattern="/employee/login/**" security="none"/>
+	<http auto-config='true' use-expressions="true">
 
+		<access-denied-handler error-page="/employee/login/denied" />
 	    <!-- You can add the Intercept-Url like the following this -->
-			<intercept-url pattern="/employee/admin/**" access="hasRole('ROLE_ADMIN')" />
-			<intercept-url pattern="/employee/user/**" access="hasRole('ROLE_ADMIN')" />
-			<intercept-url pattern="/employee/file/**" access="hasRole('ROLE_ADMIN')" />
-			<intercept-url pattern="/employee/file/**" access="hasRole('ROLE_USER')" />
-			<intercept-url pattern="/employee/user/**" access="hasRole('ROLE_USER')" />
+		<intercept-url pattern="/employee/admin/**" access="hasRole('ROLE_ADMIN')" />
+		<intercept-url pattern="/employee/user/**" access="hasRole('ROLE_ADMIN')" />
+		<intercept-url pattern="/employee/file/**" access="hasRole('ROLE_ADMIN')" />
+		<intercept-url pattern="/employee/file/**" access="hasRole('ROLE_USER')" />
+		<intercept-url pattern="/employee/user/**" access="hasRole('ROLE_USER')" />
 
 	    <logout logout-url="/employee/auth/logout" logout-success-url="/employee/"/>
 	    <form-login
@@ -24,28 +26,7 @@
             default-target-url="/employee/"/>
 	</http>
 
-	<!--  
-  <beans:bean id="daoAuthenticationProvider"
-      class="org.springframework.security.authentication.dao.DaoAuthenticationProvider">
-      <beans:property name="userDetailsService" ref="userDetailsService"/>
-  </beans:bean>
-
-  <beans:bean id="authenticationManager"
-      class="org.springframework.security.authentication.ProviderManager">
-      <beans:property name="providers">
-          <beans:list>
-              <beans:ref local="daoAuthenticationProvider" />
-          </beans:list>
-      </beans:property>
-  </beans:bean>
--->
 	<authentication-manager>
-		<!-- Custom Check2 
-		<authentication-provider user-service-ref="userDetailsService">
-			<password-encoder ref="passwordEncoder"/>
-		</authentication-provider>
-		 -->
-	  <!-- Custom Check1 	  -->
 	  <authentication-provider ref="defaultAuthenticationProvider"/>
 	</authentication-manager>
 

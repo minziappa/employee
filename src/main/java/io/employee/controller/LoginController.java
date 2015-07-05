@@ -76,6 +76,14 @@ public class LoginController extends AbstractBaseController {
 		return "login/sentEmail";
 	}
 
+	@RequestMapping(value = {"confirmSingup"})
+	public String confirmSingup(@RequestParam("token") String title, HttpSession session) throws Exception {
+
+		logger.info("this is login.do");
+
+		return "login/confirmSingup";
+	}
+
 	@RequestMapping(value = {"logout"})
 	public String logout(ModelMap model, SessionStatus sessionStatus) throws Exception {
 
@@ -93,6 +101,7 @@ public class LoginController extends AbstractBaseController {
 	@RequestMapping(value = {"denied"})
 	public String denied(ModelMap model, HttpSession session) throws Exception {
 
+		logger.info("it is denied");
 		return "login/denied";
 	}
 
