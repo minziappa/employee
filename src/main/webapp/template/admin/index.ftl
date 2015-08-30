@@ -2,7 +2,7 @@
 <@layout.myLayout>
 
 <div class="row row-offcanvas row-offcanvas-right">
-    <#include "../common/sideMenu.ftl"/>
+    <#include "../common/sideMenuAdmin.ftl"/>
 
     <div class="col-xs-12 col-sm-9">
       <p class="pull-right visible-xs">

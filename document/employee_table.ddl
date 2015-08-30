@@ -34,11 +34,23 @@ CREATE TABLE employee_sequence
 	PRIMARY KEY (seq_name)
 ) ENGINE=innoDB DEFAULT CHARSET=utf8;
 
+CREATE TABLE employee_user_temp
+(
+	user_temp_num BIGINT UNSIGNED NOT NULL,
+	user_temp_email VARCHAR(200) NOT NULL,
+	user_temp_token VARCHAR(300) NOT NULL,
+	user_temp_status CHAR(1) NOT NULL,
+	insert_date TIMESTAMP NOT NULL,
+	update_date TIMESTAMP NOT NULL,
+	PRIMARY KEY (user_temp_num)
+) ENGINE=innoDB DEFAULT CHARSET=utf8;
+CREATE INDEX user_temp_num_idx1 ON employee_user_temp(user_temp_num);
 
 CREATE TABLE employee_user
 (
 	user_num BIGINT UNSIGNED NOT NULL,
 	user_id VARCHAR(100) NOT NULL,
+	user_email VARCHAR(100) NOT NULL,
 	user_code VARCHAR(100) NOT NULL,
 	user_pwd VARCHAR(250) NOT NULL,
 	user_name_first VARCHAR(45) NOT NULL,

@@ -9,6 +9,7 @@ public class EmployeeUser implements Serializable {
 	
 	private long userNum;
 	private String userId;
+	private String userEmail;
 	private String userCode;
 	private String userPwd;
 	private String userNameFirst;
@@ -41,6 +42,12 @@ public class EmployeeUser implements Serializable {
 	}
 	public void setUserId(String userId) {
 		this.userId = userId;
+	}
+	public String getUserEmail() {
+		return userEmail;
+	}
+	public void setUserEmail(String userEmail) {
+		this.userEmail = userEmail;
 	}
 	public String getUserCode() {
 		return userCode;

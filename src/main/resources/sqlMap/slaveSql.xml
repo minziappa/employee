@@ -1,0 +1,100 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" 
+  "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="io.employee.dao.SlaveDao">
+
+	<select id="selectemployee" parameterType="map" 
+		resultType="io.employee.bean.model.UserModel">
+		SELECT
+			user_id,
+			user_name,
+			user_pwd,
+			user_status,
+			user_age,
+			user_img,
+			insert_date,
+			update_date
+		FROM
+			employee_user
+		WHERE
+			user_id = #{userId}
+	</select>
+
+	<select id="selectemployeeListSum" resultType="java.lang.Integer">
+		SELECT
+			COUNT(user_id) as cnt
+		FROM
+			employee_user
+	</select>
+
+	<select id="selectemployeeByName" parameterType="map" 
+		resultType="io.employee.bean.model.UserModel">
+		SELECT
+			user_id,
+			user_name,
+			user_pwd,
+			user_status,
+			user_age,
+			user_img,
+			insert_date,
+			update_date
+		FROM
+			employee_user
+		WHERE
+			user_name = #{userName}
+	</select>
+
+	<select id="selectemployeeList" parameterType="map" 
+		resultType="io.employee.bean.model.UserModel">
+		SELECT
+			user_id,
+			user_name,
+			user_pwd,
+			user_status,
+			user_age,
+			user_img,
+			insert_date,
+			update_date
+		FROM
+			employee_user
+		LIMIT
+			#{nowPage}, #{row}
+	</select>
+
+	<select id="selectemployeeListByName" parameterType="map" 
+		resultType="io.employee.bean.model.UserModel">
+		SELECT
+			user_id,
+			user_name,
+			user_pwd,
+			user_status,
+			user_age,
+			user_img,
+			insert_date,
+			update_date
+		FROM
+			employee_user
+		WHERE
+			user_name = #{userName}
+		Limit 1
+	</select>
+
+	<select id="selectemployeeListByDate" parameterType="map" 
+		resultType="io.employee.bean.model.UserModel">
+		SELECT
+			user_id,
+			user_name,
+			user_pwd,
+			user_status,
+			user_age,
+			user_img,
+			insert_date,
+			update_date
+		FROM
+			employee_user
+		WHERE
+			insert_date <![CDATA[<=]]> #{insertDate}
+	</select>
+
+</mapper>

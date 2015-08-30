@@ -12,7 +12,6 @@ import org.apache.ibatis.session.SqlSession;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.security.authentication.encoding.Md5PasswordEncoder;
 import org.springframework.stereotype.Service;
 
 @Service
@@ -26,8 +25,6 @@ public class AdminServiceImpl implements AdminService {
 	private SqlSession adminSlaveDao;
 	@Autowired
     private Configuration configuration;
-	@Autowired
-	private Md5PasswordEncoder passwordEncoder;
 
 	@Override
 	public boolean insertemployee(InsertUserPara insertUserPara)

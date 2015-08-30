@@ -15,12 +15,12 @@ import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.authentication.AuthenticationProvider;
 import org.springframework.security.authentication.UsernamePasswordAuthenticationToken;
-import org.springframework.security.authentication.encoding.Md5PasswordEncoder;
 import org.springframework.security.core.Authentication;
 import org.springframework.security.core.AuthenticationException;
 import org.springframework.security.core.GrantedAuthority;
 import org.springframework.security.core.authority.SimpleGrantedAuthority;
 import org.springframework.security.core.userdetails.UsernameNotFoundException;
+import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.stereotype.Component;
 
 @Component
@@ -30,7 +30,7 @@ public class DefaultAuthenticationProvider implements AuthenticationProvider {
 	@Autowired
 	private SqlSession adminSlaveDao;
 	@Autowired
-	private Md5PasswordEncoder passwordEncoder;
+	private BCryptPasswordEncoder passwordEncoder;
 
 	@Override
 	public Authentication authenticate(Authentication authentication)
@@ -54,7 +54,7 @@ public class DefaultAuthenticationProvider implements AuthenticationProvider {
 			Map<String, Object> mapSelect = new HashMap<String, Object>();
 			mapSelect.put("adminName", adminId);
 
-	        logger.info("pass>>>" + passwordEncoder.encodePassword(adminPwd.toString(), null));
+	        logger.info("pass>>>" + passwordEncoder.encode(adminPwd.toString()));
 
 			try {
 				managementAdmin = adminSlaveDao.getMapper(AdminSlaveDao.class).selectAdmin(mapSelect);
@@ -83,10 +83,10 @@ public class DefaultAuthenticationProvider implements AuthenticationProvider {
 	        boolean credentialsNonExpired = true;
 	        boolean accountNonLocked = true;
 
-	        admin = new ExtendUser<ManagementAdmin>(managementAdmin.getAdminName(),  passwordEncoder.encodePassword(adminPwd.toString(), null), enabled, 
+	        admin = new ExtendUser<ManagementAdmin>(managementAdmin.getAdminName(),  passwordEncoder.encode(adminPwd.toString()), enabled, 
 	        		accountNonExpired, credentialsNonExpired, accountNonLocked, authorities, managementAdmin);
 
-	        upat = new UsernamePasswordAuthenticationToken(admin, passwordEncoder.encodePassword(adminPwd.toString(), null), authorities);
+	        upat = new UsernamePasswordAuthenticationToken(admin, passwordEncoder.encode(adminPwd.toString()), authorities);
 	        upat.setDetails(authentication.getDetails());
 
 		} catch (Exception e) {

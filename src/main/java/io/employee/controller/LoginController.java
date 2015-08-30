@@ -1,9 +1,12 @@
 package io.employee.controller;
 
 import io.employee.bean.model.EmployeeModel;
+import io.employee.bean.para.RegisterAdminPara;
 import io.employee.bean.para.UserPara;
+import io.employee.bean.para.login.RegisterPwdPara;
 import io.employee.bean.para.login.SignUpPara;
 import io.employee.service.LoginService;
+import io.employee.service.UserService;
 
 import javax.servlet.http.HttpSession;
 import javax.validation.Valid;
@@ -42,7 +45,6 @@ public class LoginController extends AbstractBaseController {
 	private MessageSource message;
 	@Autowired
 	private LoginService loginService;
-
 	
 	@RequestMapping(value = {"index"})
 	public String index(ModelMap model) throws Exception {
@@ -71,15 +73,24 @@ public class LoginController extends AbstractBaseController {
 
 		logger.info("this is login.do");
 
-		loginService.sendEmail(signUpPara);
+		loginService.registerUserTemp(signUpPara);
 
 		return "login/sentEmail";
 	}
 
 	@RequestMapping(value = {"confirmSingup"})
-	public String confirmSingup(@RequestParam("token") String title, HttpSession session) throws Exception {
+	public String confirmSingup(@RequestParam("token") String token, HttpSession session) throws Exception {
 
-		logger.info("this is login.do");
+		logger.info("token = " + token);
+		loginService.checkToken(token);
+
+		return "login/confirmSingup";
+	}
+
+	@RequestMapping(value = {"registerPwd"})
+	public String registerPwd(@Valid RegisterPwdPara registerPwdPara, HttpSession session) throws Exception {
+
+		loginService.insertUser(registerPwdPara);
 
 		return "login/confirmSingup";
 	}

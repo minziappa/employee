@@ -16,6 +16,7 @@
 
 	<mappers>
 		<mapper resource="sqlMap/adminMasterSql.xml" />
+		<mapper resource="sqlMap/userMasterSql.xml" />
 	</mappers>
 
 </configuration>

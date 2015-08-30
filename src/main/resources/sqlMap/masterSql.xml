@@ -1,0 +1,51 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" 
+  "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="io.employee.dao.MasterDao">
+
+	<insert id="insertemployee" parameterType="map">
+		INSERT INTO employee_user (
+			user_name,
+			user_pwd,
+			user_status,
+			user_age,
+			user_img,
+			insert_date,
+			update_date
+		) VALUES (
+			#{userName},
+			#{userPwd},
+			#{userStatus},
+			#{userAge},
+			#{userImg},
+			now(),
+			now()
+		)
+	</insert>
+
+	<insert id="insertData" parameterType="map">
+		INSERT INTO employee_data (
+			data_title,
+			data_dummy1,
+			data_dummy2,
+			data_dummy3,
+			insert_date,
+			update_date
+		) VALUES (
+			#{dataTitle},
+			#{dataDummy1},
+			#{dataDummy2},
+			#{dataDummy3},
+			now(),
+			now()
+		)
+	</insert>
+
+	<delete id="deleteemployeeByName" parameterType="map">
+		DELETE FROM employee_user 
+		WHERE 
+			user_name = #{userName}
+	</delete>
+
+</mapper>

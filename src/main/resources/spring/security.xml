@@ -21,7 +21,7 @@
 
 	    <logout logout-url="/employee/auth/logout" logout-success-url="/employee/"/>
 	    <form-login
-            login-page="/employee/login/index"
+            login-page="/employee/login/index" login-processing-url="/j_spring_security_check"
             authentication-failure-url="/employee/login/login?error=true"
             default-target-url="/employee/"/>
 	</http>

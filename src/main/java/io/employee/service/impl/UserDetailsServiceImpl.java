@@ -13,12 +13,12 @@ import org.apache.ibatis.session.SqlSession;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.security.authentication.encoding.Md5PasswordEncoder;
 import org.springframework.security.core.GrantedAuthority;
 import org.springframework.security.core.authority.SimpleGrantedAuthority;
 import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.security.core.userdetails.UserDetailsService;
 import org.springframework.security.core.userdetails.UsernameNotFoundException;
+import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
@@ -30,7 +30,7 @@ public class UserDetailsServiceImpl implements UserDetailsService {
 	@Autowired
 	private SqlSession slaveDao;
 	@Autowired
-	private Md5PasswordEncoder passwordEncoder;
+	private BCryptPasswordEncoder passwordEncoder;
 
 	@Override
 	@Transactional(readOnly = true)
@@ -74,7 +74,7 @@ public class UserDetailsServiceImpl implements UserDetailsService {
 	        boolean accountNonLocked = true;
 
 	        extendEmployeeUser = new ExtendEmployeeUser(employeeUser.getUserNameFirst() + employeeUser.getUserNameLast(), 
-	        		passwordEncoder.encodePassword("test", null), enabled, accountNonExpired, credentialsNonExpired, 
+	        		passwordEncoder.encode("test"), enabled, accountNonExpired, credentialsNonExpired, 
 	        		accountNonLocked, authorities, employeeUser);
 
 		} catch (Exception e) {

@@ -5,7 +5,7 @@ import java.util.Map;
 import io.employee.bean.model.EmployeeModel;
 import io.employee.bean.para.InsertUserPara;
 import io.employee.bean.para.RegisterAdminPara;
-import io.employee.service.EmployeeService;
+import io.employee.service.UserService;
 
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
@@ -42,7 +42,7 @@ public class AdminController extends AbstractBaseController {
 	@Autowired
 	private MessageSource message;
 	@Autowired
-    private EmployeeService employeeService;
+    private UserService employeeService;
 
     /**
      * Admin Index
