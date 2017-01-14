@@ -1,0 +1,1 @@
+INSERT INTO abilists_sequence(seq_name, seq_num, seq_explain) VALUES('userTemp', 1, 'user temp account');

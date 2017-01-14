@@ -40,7 +40,7 @@ public class LoginServiceImpl implements LoginService {
 	@Autowired
 	private BCryptPasswordEncoder passwordEncoder;
 
-	private CipherUtility cu = new CipherUtility("tkfkagody");
+	private CipherUtility cu = new CipherUtility();
 
 	private String sendEmail(SignUpPara signUpPara, String token) throws Exception {
 
@@ -48,7 +48,7 @@ public class LoginServiceImpl implements LoginService {
 
 		EmailBean email = new EmailBean();
 		email.setTo(signUpPara.getUserEmail());
-		email.setFrom("higuybugs@gmail.com");
+		email.setFrom("heyguybug@gmail.com");
 
 		StringBuffer sb = new StringBuffer();
 		sb.append("This is a test /n/r");
@@ -56,7 +56,7 @@ public class LoginServiceImpl implements LoginService {
 		email.setMsg(sb.toString());
 		email.setSubject("Please, complete your register");
 
-		Emailer.sendEmail(email, "email@gamil", "password");
+		Emailer.sendEmail(email, "heyguybug@gmail.com", "testest");
 
 		return token;
 	}
@@ -68,6 +68,7 @@ public class LoginServiceImpl implements LoginService {
 
 		Map<String, Object> mapSeq = new HashMap<String, Object>();
 		mapSeq.put("seqName", "userTemp");
+
 		try {
 			seqNum = masterDao.getMapper(UserMasterDao.class).updateSequeceUserTemp(mapSeq);
 		} catch (Exception e) {
@@ -105,7 +106,7 @@ public class LoginServiceImpl implements LoginService {
 
 		String token2 = TokenUtility.generateToken(signUpPara.getUserEmail());
 
-		insertUserTemp(signUpPara, token2);
+		this.insertUserTemp(signUpPara, token2);
 		this.sendEmail(signUpPara, token2);
 	}
 

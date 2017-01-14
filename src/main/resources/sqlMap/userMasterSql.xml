@@ -3,7 +3,7 @@
   "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 
 <mapper namespace="io.employee.dao.UserMasterDao">
-    <insert id="updateSequece" parameterType="map">
+    <insert id="updateSequeceUserTemp" parameterType="map">
         UPDATE
             employee_sequence
         SET

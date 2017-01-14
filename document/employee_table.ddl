@@ -34,6 +34,9 @@ CREATE TABLE employee_sequence
 	PRIMARY KEY (seq_name)
 ) ENGINE=innoDB DEFAULT CHARSET=utf8;
 
+CREATE INDEX seq_name_idx1 ON employee_sequence(seq_name);
+
+
 CREATE TABLE employee_user_temp
 (
 	user_temp_num BIGINT UNSIGNED NOT NULL,
