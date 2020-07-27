@@ -3,13 +3,13 @@ CREATE DATABASE employee DEFAULT CHARACTER SET utf8;
  */
 
 DROP TABLE if exists management_admin;
-
 DROP TABLE if exists employee_sequence;
 DROP TABLE if exists employee_user;
 DROP TABLE if exists employee_company;
 DROP TABLE if exists employee_family;
 DROP TABLE if exists employee_school;
 DROP TABLE if exists employee_certificate;
+DROP TABLE if exists employee_user_temp;
 
 CREATE TABLE management_admin
 (
@@ -19,8 +19,8 @@ CREATE TABLE management_admin
 	admin_status CHAR(1) NOT NULL,
 	user_num BIGINT UNSIGNED NULL,
 	delete_flag CHAR(1) NULL,
-	insert_date TIMESTAMP NOT NULL,
-	update_date TIMESTAMP NOT NULL,
+	insert_date TIMESTAMP NULL,
+	update_date TIMESTAMP NULL,
 	PRIMARY KEY (admin_id)
 ) ENGINE=innoDB DEFAULT CHARSET=utf8;
 
@@ -43,8 +43,8 @@ CREATE TABLE employee_user_temp
 	user_temp_email VARCHAR(200) NOT NULL,
 	user_temp_token VARCHAR(300) NOT NULL,
 	user_temp_status CHAR(1) NOT NULL,
-	insert_date TIMESTAMP NOT NULL,
-	update_date TIMESTAMP NOT NULL,
+	insert_date TIMESTAMP NULL,
+	update_date TIMESTAMP NULL,
 	PRIMARY KEY (user_temp_num)
 ) ENGINE=innoDB DEFAULT CHARSET=utf8;
 CREATE INDEX user_temp_num_idx1 ON employee_user_temp(user_temp_num);
@@ -72,8 +72,8 @@ CREATE TABLE employee_user
 	user_small_img MEDIUMBLOB NULL,
 	user_big_img LONGBLOB NULL,
 	delete_flag CHAR(1) NULL,
-	insert_date TIMESTAMP NOT NULL,
-	update_date TIMESTAMP NOT NULL,
+	insert_date TIMESTAMP NULL,
+	update_date TIMESTAMP NULL,
 	PRIMARY KEY (user_num)
 ) ENGINE=innoDB DEFAULT CHARSET=utf8;
 
@@ -93,13 +93,13 @@ CREATE TABLE employee_company
 	company_cellphone_number VARCHAR(45) NOT NULL,
 	company_occupation_type VARCHAR(50) NOT NULL,
 	company_hire_type VARCHAR(45) NOT NULL,
-	company_hire_date TIMESTAMP NOT NULL,
-	company_quit_date TIMESTAMP NOT NULL,
-	company_quit_reason VARCHAR(150) NOT NULL,
+	company_hire_date TIMESTAMP NULL,
+	company_quit_date TIMESTAMP NULL,
+	company_quit_reason VARCHAR(150) NULL,
 	user_num BIGINT UNSIGNED NOT NULL,
 	delete_flag CHAR(1) NULL,
-	insert_date TIMESTAMP NOT NULL,
-	update_date TIMESTAMP NOT NULL,
+	insert_date TIMESTAMP NULL,
+	update_date TIMESTAMP NULL,
 	PRIMARY KEY (company_num)
 ) ENGINE=innoDB DEFAULT CHARSET=utf8;
 CREATE INDEX user_num_idx1 ON employee_company(user_num);
@@ -119,8 +119,8 @@ CREATE TABLE employee_family
 	family_status CHAR(1) NOT NULL,
 	user_num BIGINT UNSIGNED NOT NULL,
 	delete_flag CHAR(1) NULL,
-	insert_date TIMESTAMP NOT NULL,
-	update_date TIMESTAMP NOT NULL,
+	insert_date TIMESTAMP NULL,
+	update_date TIMESTAMP NULL,
 	PRIMARY KEY (family_num)
 ) ENGINE=innoDB DEFAULT CHARSET=utf8;
 CREATE INDEX user_num_idx1 ON employee_family(user_num);
@@ -139,8 +139,8 @@ CREATE TABLE employee_school
 	school_status CHAR(1) NULL,
 	user_num BIGINT UNSIGNED NOT NULL,
 	delete_flag CHAR(1) NULL,
-	insert_date TIMESTAMP NOT NULL,
-	update_date TIMESTAMP NOT NULL,
+	insert_date TIMESTAMP NULL,
+	update_date TIMESTAMP NULL,
 	PRIMARY KEY (school_num)
 ) ENGINE=innoDB DEFAULT CHARSET=utf8;
 CREATE INDEX user_num_idx1 ON employee_school(user_num);
@@ -151,12 +151,12 @@ CREATE TABLE employee_certificate
 	certificate_name VARCHAR(200) NOT NULL,
 	certificate_nation VARCHAR(200) NOT NULL,
 	certificate_get_date TIMESTAMP NOT NULL,
-	certificate_expire_date TIMESTAMP NOT NULL,
-	certificate_update_date TIMESTAMP NOT NULL,
+	certificate_expire_date TIMESTAMP NULL,
+	certificate_update_date TIMESTAMP NULL,
 	user_num BIGINT UNSIGNED NOT NULL,
 	delete_flag CHAR(1) NULL,
-	insert_date TIMESTAMP NOT NULL,
-	update_date TIMESTAMP NOT NULL,
+	insert_date TIMESTAMP NULL,
+	update_date TIMESTAMP NULL,
 	PRIMARY KEY (certificate_num)
 ) ENGINE=innoDB DEFAULT CHARSET=utf8;
 

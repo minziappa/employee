@@ -23,16 +23,6 @@ import org.springframework.validation.BindingResult;
 import org.springframework.validation.Validator;
 import org.springframework.web.bind.annotation.RequestMapping;
 
-/***
- * The <code>UserController</code> class represents action controller.
- * 1. Explain for a method .....
- * 
- * @author  Woong-joon Kim
- * @version 0.1, 14/07/17
- * @see     io.employee.controller.UserController#user()
- * @see     io.employee.controller.UserController#selectUser()
- * @since   JDK1.7
- */
 @Controller
 @RequestMapping("/user")
 public class UserController extends AbstractBaseController {

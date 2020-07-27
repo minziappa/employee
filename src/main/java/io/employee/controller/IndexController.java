@@ -12,15 +12,6 @@ import org.springframework.validation.Validator;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 
-/***
- * The <code>IndexController</code> class represents action controller.
- * 1. Explain for a method .....
- * 
- * @author  Woong-joon Kim
- * @version 0.1, 14/07/17
- * @see     io.employee.controller.IndexController#index()
- * @since   JDK1.7
- */
 @Controller
 public class IndexController extends AbstractBaseController {
 

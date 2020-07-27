@@ -9,10 +9,10 @@ import io.employee.bean.para.login.SignUpPara;
 import io.employee.dao.UserMasterDao;
 import io.employee.service.LoginService;
 import io.employee.service.UserService;
-import io.utility.cipher.CipherUtility;
-import io.utility.mail.EmailBean;
-import io.utility.mail.Emailer;
-import io.utility.utile.TokenUtility;
+import io.utility.email.EmailBean;
+import io.utility.email.Emailer;
+import io.utility.security.CipherUtility;
+import io.utility.security.TokenUtility;
 
 import org.apache.commons.configuration.Configuration;
 import org.apache.ibatis.session.SqlSession;
@@ -38,17 +38,17 @@ public class LoginServiceImpl implements LoginService {
 	@Autowired
     private Configuration configuration;
 	@Autowired
+	private CipherUtility cipherUtility;
+	@Autowired
 	private BCryptPasswordEncoder passwordEncoder;
-
-	private CipherUtility cu = new CipherUtility();
 
 	private String sendEmail(SignUpPara signUpPara, String token) throws Exception {
 
-		String token1 = cu.encrypt(signUpPara.getUserEmail());
+		String token1 = cipherUtility.encrypt(signUpPara.getUserEmail());
 
 		EmailBean email = new EmailBean();
 		email.setTo(signUpPara.getUserEmail());
-		email.setFrom("heyguybug@gmail.com");
+//		email.setFrom("heyguybug@gmail.com");
 
 		StringBuffer sb = new StringBuffer();
 		sb.append("This is a test /n/r");

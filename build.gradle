@@ -3,8 +3,8 @@ apply plugin: 'eclipse'
 apply plugin: 'war'
 apply plugin: 'jetty'
 
-sourceCompatibility = '1.7'
-targetCompatibility = '1.7'
+sourceCompatibility = '1.8'
+targetCompatibility = '1.8'
 
 version = '1.0'
 
@@ -25,8 +25,8 @@ configurations {
 }
 
 ext {
-	springVersion = '4.1.7.RELEASE'
-	springSecrityVersion = '4.0.1.RELEASE'
+	springVersion = '4.3.27.RELEASE'
+	springSecrityVersion = '4.2.6.RELEASE'
 }
 
 dependencies {
@@ -62,15 +62,18 @@ dependencies {
 	compile "org.mybatis:mybatis-spring:1.2.0"
 	compile "org.springmodules:spring-modules-jakarta-commons:0.8"
 	compile "org.apache.pdfbox:pdfbox:1.8.6"
-	compile "io.utility:utility:0.5"
-	compile "io.paging:paging:0.1"
+	
+	compile "io.utility:letter:0.0.7"
+	compile "io.utility:security:0.0.1"
+	compile "io.utility:email:0.0.3"
+	compile "io.paging:paging:0.2"
 	provided "org.apache.tomcat:servlet-api:6.0.33"
 	//provided "org.apache.tomcat:tomcat-servlet-api:7.0.56"
 	testCompile "junit:junit:4.+"
 }
 
 jettyRun {
-	httpPort = 8080
+	httpPort = 9002
 	reload = 'automatic'
 	scanIntervalSeconds = 2
 	/* Change context path (base url). otherwise defaults to name of project */

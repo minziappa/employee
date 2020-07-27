@@ -1,36 +1,16 @@
 package io.employee.controller;
 
-import java.util.Map;
-
-import io.employee.bean.model.EmployeeModel;
-import io.employee.bean.para.InsertUserPara;
-import io.employee.bean.para.RegisterAdminPara;
-import io.employee.service.UserService;
-
-import javax.servlet.http.HttpServletRequest;
-import javax.servlet.http.HttpServletResponse;
-import javax.validation.Valid;
-
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.MessageSource;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.ModelMap;
-import org.springframework.validation.BindingResult;
 import org.springframework.validation.Validator;
 import org.springframework.web.bind.annotation.RequestMapping;
 
-/***
- * The <code>AdminController</code> class represents action controller.
- * 1. Explain for a method .....
- * 
- * @author  Woong-joon Kim
- * @version 0.2
- * @see     io.employee.controller.AdminController#index()
- * @see     io.employee.controller.AdminController#insertUser()
- * @since   JDK1.7
- */
+import io.employee.service.UserService;
+
 @Controller
 @RequestMapping("/admin")
 public class AdminController extends AbstractBaseController {
